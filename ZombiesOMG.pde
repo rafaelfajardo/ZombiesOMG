@@ -7,7 +7,7 @@ int index = 0;
 
 void setup()
 {
-  size(1000, 744);
+  size(1000, 700);
   Tom = new SimpleFigure(width/2-50,height/2);
   Dick = new SimpleFigure(width/2,height/2);
   Harry = new SimpleFigure(width/2+50,height/2);
@@ -32,7 +32,9 @@ void draw()
   {
     zombie[i].drawMe();
     zombie[i].moveMe();
-    if (Tom.intersect(zombie[i]))
+    if (Tom.intersect(zombie[i])
+    || Dick.intersect(zombie[i])
+    || Harry.intersect(zombie[i]))
     {
       zombie[i].setVX(0);
       zombie[i].setVY(0);
@@ -40,7 +42,7 @@ void draw()
   }
 }
 
-
+// the following changes the X,Y of the index zombie to current mouse position with no effect on velocity
 void mouseClicked()
 {
   println("index is: " + index);
